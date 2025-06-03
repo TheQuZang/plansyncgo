@@ -1,0 +1,27 @@
+/* Versucht, die spezifischen Metadaten-Felder (Schlüssel und Werte)
+   praktisch unsichtbar zu machen und minimalen Platz einzunehmen. */
+
+.dataview.inline-field-key[data-dv-key="obsidianTaskId"],
+.dataview.inline-field-key[data-dv-key="gcalEventId"],
+.dataview.inline-field-key[data-dv-key="sync"],
+span.dataview.inline-field-value[data-dv-key="obsidianTaskId"],
+span.dataview.inline-field-value[data-dv-key="gcalEventId"],
+span.dataview.inline-field-value[data-dv-key="sync"] {
+  font-size: 1px !important;       /* Extrem kleine Schriftgröße */
+  color: transparent !important;   /* Textfarbe durchsichtig */
+  opacity: 0 !important;           /* Vollständig transparent */
+  margin: 0 1px 0 0 !important;    /* Minimale Ränder, um sie bei Bedarf zu "finden", aber fast kein Platz */
+  padding: 0 !important;           /* Kein Innenabstand */
+  max-width: 1px !important;       /* Versucht, die Breite zu kollabieren */
+  overflow: hidden !important;     /* Versteckt jeglichen Überlauf */
+  vertical-align: baseline;      /* Beeinflusst weniger die Zeilenhöhe */
+  display: inline-block;         /* Notwendig für max-width bei Spans, aber inline-block ist okay */
+}
+
+/* Falls die Operatoren (::) und Klammern ([]) separate Elemente sind und noch stören,
+   bräuchten wir deren spezifische HTML-Struktur (Klassen/Attribute), um sie auch zu verstecken.
+   Die obigen Regeln zielen primär auf die "Schlüssel" und "Werte".
+   Wenn der Screenshot `SCR-20250601-fzsn.png` die Elemente nach dem letzten CSS zeigt,
+   dann sind es diese "Pillen", die wir jetzt mit dem obigen Code ansprechen.
+   Die Klammern und Doppelpunkte könnten bereits Teil dieser "Pillen" sein oder separat.
+*/
