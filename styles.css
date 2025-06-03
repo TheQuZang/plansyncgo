@@ -1,0 +1,127 @@
+/* styles.css für PlanSyncGo Plugin - Block Layout */ /* MODIFIED */
+
+/* Titel der View */
+.view-content > h4 {
+    font-size: var(--font-ui-medium);
+    margin-bottom: 10px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+/* Haupt-Wrapper für die Timeline (Achse + Event-Bereich) */
+.timeline-wrapper {
+    display: flex;
+    position: relative;
+    margin-top: 10px;
+}
+
+/* Linke Spalte für die Stundenbeschriftungen */
+.timeline-hours-axis {
+    flex-shrink: 0;
+    width: 60px;
+    margin-right: 8px;
+    position: relative;
+}
+
+.timeline-hour-label-entry {
+    padding-right: 5px;
+    box-sizing: border-box;
+    position: relative !important;
+    /* height wird per JS gesetzt */
+}
+
+.timeline-main-hour-text {
+    position: absolute;
+    top: 1px;
+    right: 5px;
+    line-height: 1.1;
+    font-weight: 500;
+    font-size: var(--font-ui-small); /* Haupt-Stundengröße */
+    color: var(--text-normal);
+}
+
+.timeline-quarter-hour-label {
+    position: absolute;
+    right: 5px;
+    font-size: 0.75em; /* Kleiner als Hauptstunde, relativ zu .timeline-hour-label-entry (var(--font-ui-small)) */
+    color: var(--text-faint);
+    line-height: 1;
+    /* top wird per JS gesetzt */
+}
+
+
+/* Hauptbereich, in dem die Event-Blöcke und Stundenlinien gezeichnet werden */
+.timeline-events-area {
+    flex-grow: 1;
+    position: relative;
+    background-color: var(--background-primary);
+}
+
+/* Horizontale Linien für jede Stunde im Event-Bereich */
+.timeline-hour-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: var(--background-modifier-border);
+    z-index: 0;
+}
+
+/* *** NEU: Stil für Viertelstunden-Rasterlinien *** */
+.timeline-quarter-hour-grid-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: var(--background-modifier-border);
+    opacity: 0.4; /* Schwächer als die Hauptlinien */
+    z-index: 0;
+}
+
+
+/* Einzelner Event-Block - Basistyle */
+.timeline-event-block {
+    position: absolute;
+    border-radius: var(--radius-s);
+    padding: 2px 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+    font-size: var(--font-ui-smaller);
+    z-index: 1;
+    line-height: 1.2;
+    border: 1px solid var(--background-modifier-border-hover);
+}
+
+.timeline-event-block:hover {
+    border-color: var(--text-accent);
+}
+
+.timeline-event-title {
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 1px;
+    font-size: 0.95em;
+}
+
+.timeline-event-time {
+    font-size: 0.8em;
+    opacity: 0.7;
+}
+
+/* NEU: Stil für die "Aktuelle Zeit"-Linie */
+.timeline-current-time-indicator {
+    position: absolute;
+    left: 0;
+    right: 0; /* oder width: 100%; */
+    height: 2px;
+    /* Höhe des Strichs */
+    background-color: red; /* Farbe des Strichs */
+    z-index: 10;
+    /* Sollte über den Rasterlinien, aber ggf. unter den Events liegen, falls man das möchte.
+    Mit 10 ist es erstmal sehr weit oben. */
+    opacity: 0.75;
+    /* Leichte Transparenz */
+    pointer-events: none; /* Damit die Linie nicht versehentlich Klicks abfängt */
+}
